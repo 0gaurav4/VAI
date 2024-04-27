@@ -1,0 +1,117 @@
+
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+.table-container {
+    border-radius: 20px; /* Adjust the value to your preference */
+    overflow: hidden; /* Ensure table corners are rounded */
+}
+
+.table {
+    --bs-table-bg: color(srgb 0.14 0.14 0.14);
+    --bs-table-accent-bg: color(srgb 0.14 0.14 0.14)#000;
+    --bs-table-striped-color: #212528;
+    --bs-table-striped-bg: #0d6efd;
+    --bs-table-active-color: #0d6efd;
+    --bs-table-active-bg: color(srgb 0.14 0.14 0.14);
+    --bs-table-hover-color: #fffd83;
+    --bs-table-hover-bg: #000;
+    width: 100%;
+    margin-bottom: 14rem;
+    color: #f8f9fa;
+    vertical-align: baseline;
+    border-color: rgba(13, 110, 253, .25);
+}
+table {
+    caption-side: bottom;
+    border-collapse: separate;
+    border-radius: 20%;
+}
+
+/* CSS */
+.button-74 {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-74:hover {
+  background-color: #fff;
+}
+
+.button-74:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+@media (min-width: 768px) {
+  .button-74 {
+    min-width: 120px;
+    padding: 0 25px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #422800;
+  font-weight: 600; 
+}
+
+</style>
+{% endblock css %}
+
+
+{% block body %}
+
+    <h3 class="text-center p-3">
+        <b style="color: rgb(242, 247, 250);">Uploaded Files </b>         
+        <!-- {% include "notify.html" %} -->
+        
+    </h3>
+<div class="m-5 table-container">
+<table class="table table-striped|sm|bordered table-inverse table-responsive table-container">
+    <thead class="thead-inverse|thead-default">
+        <tr>
+            <th><b>Id</b></th>   
+            <th><b>File-Name</b></th>
+            <th><b>File-Path</b></th>
+            <th><b>File-Type</b></th>
+            <th><b>Created-At</b></th>
+            <th><b>Editing</b></th>
+            <th><b>Delete</b></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in filelist %}
+        <tr>
+            <td >{{item.id}}</td>
+            <td >{{item.filename}}</td>
+            <td >{{item.filepath}}</td>
+            <td >{{item.datatype}}</td>
+            <td >{{item.created_at}}</td>
+            <td ><button class="button-74" role="button"><a href="/predict/{{item.id}}">Edit</a></button></td>
+            <td ><button class="button-74" role="button"><a href="/delete/{{item.id}}">Delete</a></button></td>
+        </tr>
+        {% endfor %}    
+    </tbody>    
+</table>
+</div>
+
+{% endblock body %}
+
+
+
