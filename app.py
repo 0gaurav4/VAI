@@ -2,11 +2,15 @@ from werkzeug.utils import secure_filename
 from model_orm import DataSet
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import sessionmaker
-from flask import Flask,render_template, request, flash, redirect, session
+from flask import Flask,render_template, request, flash, redirect, session,send_file,send_from_directory
 import os
 
 app = Flask(__name__)
 app.secret_key = 'thisisaverysecretkey'
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
+app.config['RESULT_FOLDER'] = 'static/results'
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+os.makedirs(app.config['RESULT_FOLDER'], exist_ok=True)
 
 def opendb():
     engine = create_engine("sqlite:///model.sqlite")
@@ -58,6 +62,10 @@ def filelisting():
     db.close()
     return render_template('dashboard.html', filelist=filelist)
 
+@app.route('/edit')
+def edit():
+    return render_template('edit.html')
+
 
 @app.route('/path')
 def path():
@@ -74,6 +82,8 @@ def delete(id):
         # return render_template('dashboard.html')
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
+
+    
 
 
 if __name__ == '__main__':
