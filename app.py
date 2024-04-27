@@ -70,7 +70,8 @@ def delete(id):
         sess.query(DataSet).filter(DataSet.id==id).delete()
         sess.commit()
         sess.close()
-        return render_template('dashboard.html')
+        return redirect('/dashboard')
+        # return render_template('dashboard.html')
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
 
