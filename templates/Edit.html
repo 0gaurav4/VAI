@@ -529,9 +529,9 @@
 </script>
 
 <!-- Modal Body-->
-<div class="modal fade" id="add_text_to_video" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+<div class="modal fade" id="add_text_to_video" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" style="color: #000000;">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitleId">
           Modal title
@@ -539,7 +539,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="container-fluid">Add rows here</div>
+        <div class="container-fluid">Type Your Text here 
+          <input type="text" id="myInput">
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -550,6 +552,15 @@
     </div>
   </div>
 </div>
+
+<style>
+  .btn-close:hover {
+    background-image: url("https://www.blackgum.com.au/graphics/icon_close.00.png")!important;
+    background-size: 30px 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+</style>
 
 
 
