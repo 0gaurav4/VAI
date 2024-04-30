@@ -25,7 +25,8 @@
           "backdrop-filter"
         ]
       }
-    ]
+    ],
+    "css-prefix-order": "off"
   },
   "browserslist": [
     "defaults",

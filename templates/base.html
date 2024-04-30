@@ -16,10 +16,13 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script src="/static/js/notify.min.js"></script>
   <script src="/static/js/style.js"></script>
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
     integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 
+  <script src="https://unpkg.com/htmx.org@1.9.12"
+    integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+    crossorigin="anonymous"></script>
 
   <style>
     .bd-placeholder-img {
@@ -55,7 +58,7 @@
       width: 100%;
     }
 
- 
+
     #container-stars {
       position: absolute;
       z-index: -1;
@@ -63,10 +66,10 @@
       height: 100%;
       overflow: hidden;
       transition: 0.5s;
-    backdrop-filter: blur(1rem);
+      backdrop-filter: blur(1rem);
       border-radius: 5rem;
     }
-    
+
     strong {
       z-index: 2;
       font-family: 'Avalors Personal Use';
@@ -75,13 +78,13 @@
       color: #FFFFFF;
       text-shadow: 0 0 4px white;
     }
-    
+
     #glow {
       position: absolute;
       display: flex;
       width: 12rem;
     }
-    
+
     .circle {
       width: 100%;
       height: 30px;
@@ -89,42 +92,42 @@
       animation: pulse_3011 4s infinite;
       z-index: -1;
     }
-    
+
     .circle:nth-of-type(1) {
       background: rgba(254, 83, 186, 0.636);
     }
-    
+
     .circle:nth-of-type(2) {
       background: rgba(142, 81, 234, 0.704);
     }
-    
+
     .btn:hover #container-stars {
       z-index: 1;
       background-color: #212121;
     }
-    
+
     .btn:hover {
       transform: scale(1.1)
     }
-    
+
     .btn:active {
       border: double 4px #FE53BB;
       background-origin: border-box;
       background-clip: content-box, border-box;
       animation: none;
     }
-    
+
     .btn:active .circle {
       background: #FE53BB;
     }
-    
+
     #stars {
       position: relative;
       background: transparent;
       width: 200rem;
       height: 200rem;
     }
-    
+
     #stars::after {
       content: "";
       position: absolute;
@@ -134,12 +137,12 @@
       height: 100%;
       animation: animStarRotate 90s linear infinite;
     }
-    
+
     #stars::after {
       background-image: radial-gradient(#ffffff 1px, transparent 1%);
       background-size: 50px 50px;
     }
-    
+
     #stars::before {
       content: "";
       position: absolute;
@@ -149,65 +152,63 @@
       height: 500%;
       animation: animStar 60s linear infinite;
     }
-    
+
     #stars::before {
       background-image: radial-gradient(#ffffff 1px, transparent 1%);
       background-size: 50px 50px;
       opacity: 0.5;
     }
-    
+
     @keyframes animStar {
       from {
         transform: translateY(0);
       }
-    
+
       to {
         transform: translateY(-135rem);
       }
     }
-    
+
     @keyframes animStarRotate {
       from {
         transform: rotate(360deg);
       }
-    
+
       to {
         transform: rotate(0);
       }
     }
-    
+
     @keyframes gradient_301 {
       0% {
         background-position: 0% 50%;
       }
-    
+
       50% {
         background-position: 100% 50%;
       }
-    
+
       100% {
         background-position: 0% 50%;
       }
     }
-    
+
     @keyframes pulse_3011 {
       0% {
         transform: scale(0.75);
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
       }
-    
+
       70% {
         transform: scale(1);
         box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
       }
-    
+
       100% {
         transform: scale(0.75);
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
       }
     }
-
-
   </style>
   <link rel="stylesheet" href="/static/css/sidebar.css">
   {% block css %} {% endblock %}
@@ -227,7 +228,7 @@
     <div id="container-stars">
       <div id="stars"></div>
     </div>
-  
+
     <div id="glow">
       <div class="circle"></div>
       <div class="circle"></div>
@@ -354,7 +355,7 @@
             </a>
           </li>
 
-        
+
           <li>
             <a href="/dashboard" class="nav-link text-white">
               <svg class="bi me-2" width="16" height="16">
@@ -383,115 +384,115 @@
         <div class="circle"></div>
         <div class="circle"></div>
       </div>
-      </div>
+    </div>
     {% block body %} {% endblock %}
   </div>
   </main>
 
   <style>
     canvas {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: -2;
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: -2;
     }
-</style>
+  </style>
 
 
-<!-- Canvas BG -->
-<canvas id="canvas"></canvas>
-<script src="/static/js/main.js" defer></script>
+  <!-- Canvas BG -->
+  <canvas id="canvas"></canvas>
+  <script src="/static/js/main.js" defer></script>
 
 
-<!-- Slick -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
+  <!-- Slick -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
     integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"
     integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"
     integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<!-- Tilt JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.0.3/tilt.jquery.min.js"
+  <!-- Tilt JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tilt.js/1.0.3/tilt.jquery.min.js"
     integrity="sha512-14AZ/DxUrlF26z6v7egDkpJHKyJRn/7ue2BgpWZ/fmqrqVzf4PrQnToy99sHmKwzKev/VZ1tjPxusuTV/n8CcQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
-<script>
+  <script>
     $(document).ready(function () {
-        
-        // // Banner
-        // var mousePointer = document.getElementsByClassName('mouse-moveable')
 
-        // document.addEventListener('mousemove', function (e) {
-        //     var x = e.pageY / window.innerHeight;
-        //     x = x * -20;
+      // // Banner
+      // var mousePointer = document.getElementsByClassName('mouse-moveable')
 
-        //     mousePointer[0].style.transform = 'translateY(' + x + '%)'
-        // })
+      // document.addEventListener('mousemove', function (e) {
+      //     var x = e.pageY / window.innerHeight;
+      //     x = x * -20;
 
-        // Service Tilt
-        $('.js-tilt').tilt({
-            maxTilt: 20,
-            perspective: 1400,
-            // easing: "cubic-bezier(.03,.98,.52,.99)",
-            speed: 0,
-            glare: true,
-            maxGlare: 0.2,
-        })
+      //     mousePointer[0].style.transform = 'translateY(' + x + '%)'
+      // })
 
-        $('.client-slider').slick({
-            infinite: true,
-            slidesToShow: 6,
-            slidesToScroll: 1,
-            arrows: false,
-            dots: false,
-            responsive: [
-                {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        infinite: true,
-                        dots: false,
-                        autoplay: true,
-                        autoplaySpeed: 2000,
-                    }
-                },
-            ]
-        });
+      // Service Tilt
+      $('.js-tilt').tilt({
+        maxTilt: 20,
+        perspective: 1400,
+        // easing: "cubic-bezier(.03,.98,.52,.99)",
+        speed: 0,
+        glare: true,
+        maxGlare: 0.2,
+      })
 
-        $('.review-slider').slick({
-            infinite: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            dost: true
-        })
-
-        var tl = new TimelineMax({ repeat: -1, repeatDelay: 5 });
-
-        // FAQ
-        const accItems = document.querySelectorAll(".accordion__item");
-        accItems.forEach((acc) => acc.addEventListener("click", toggleAcc));
-        function toggleAcc() {
-            // remove active class from all items exept the current item (this)
-            // accItems.forEach((item) => item != this ? item.classList.remove("accordion__item--active") : null
-
-            // toggle active class on current item
-            if (this.classList != "accordion__item--active") {
-                this.classList.toggle("accordion__item--active");
+      $('.client-slider').slick({
+        infinite: true,
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        responsive: [
+          {
+            breakpoint: 800,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: false,
+              autoplay: true,
+              autoplaySpeed: 2000,
             }
+          },
+        ]
+      });
+
+      $('.review-slider').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        dost: true
+      })
+
+      var tl = new TimelineMax({ repeat: -1, repeatDelay: 5 });
+
+      // FAQ
+      const accItems = document.querySelectorAll(".accordion__item");
+      accItems.forEach((acc) => acc.addEventListener("click", toggleAcc));
+      function toggleAcc() {
+        // remove active class from all items exept the current item (this)
+        // accItems.forEach((item) => item != this ? item.classList.remove("accordion__item--active") : null
+
+        // toggle active class on current item
+        if (this.classList != "accordion__item--active") {
+          this.classList.toggle("accordion__item--active");
         }
+      }
 
     })
 
-</script>
+  </script>
 
   <footer class="bg-dark text-center text-lg-start">
     <!-- Copyright -->

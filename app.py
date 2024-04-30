@@ -4,7 +4,7 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import sessionmaker
 from flask import Flask,render_template, request, flash, redirect, session,send_file,send_from_directory
 import os
-
+from Tasks.textclip import create_video_with_text
 app = Flask(__name__)
 app.secret_key = 'thisisaverysecretkey'
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
@@ -84,7 +84,17 @@ def delete(id):
         return f" ❎ There was a problem while deleting {e}"
 
     
-
+@app.route('/add/text/to/video/<int:id>', methods=['POST'])
+def add_text_to_video(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        text = request.form['text']
+        #
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
 
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=5000, debug=True)
