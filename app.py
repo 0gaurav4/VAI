@@ -96,6 +96,18 @@ def add_text_to_video(request, id):
     # create_video_with_text(video_path=path)
     return path
 
+@app.route('/edit/trim/<int:id>', methods=['POST'])
+def stablize(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
 if __name__ == '__main__':
   app.run(host='127.0.0.1', port=5000, debug=True)
 

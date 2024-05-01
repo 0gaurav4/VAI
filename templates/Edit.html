@@ -4,80 +4,9 @@
 {% endblock %}
 {% block body %}
 <style>
-  .swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .swiper {
-    width: 100%;
-    height: 300px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .swiper-slide {
-    background-size: cover;
-    background-position: center;
-  }
-
-  .mySwiper2 {
-    height: 80%;
-    width: 100%;
-  }
-
-  .mySwiper {
-    height: 20%;
-    box-sizing: border-box;
-    padding: 10px 0;
-  }
-
-  .mySwiper .swiper-slide {
-    width: 25%;
-    height: 100%;
-    opacity: 0.4;
-  }
-
-  .mySwiper .swiper-slide-thumb-active {
-    opacity: 1;
-  }
-
+  
   .container {
     color: #c3daf4
-  }
-
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   .function-all-thumbs .thumb-item {
@@ -199,7 +128,7 @@
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-edit.svg" class="img-fluid"
               alt="function-edit">
-            <span class="pl-2">Edit</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#stablize">Stablize</span>
           </div>
         </li>
         <li class="thumb-item">
@@ -213,14 +142,14 @@
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-effects.svg" class="img-fluid"
               alt="function-color">
-            <span class="pl-2">Clip Extraction</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#edittrim">Clip Extraction</span>
           </div>
         </li>
         <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
               alt="function-effects">
-            <span class="pl-2">Video Speed Adjust</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#videoSpeed">Video Speed Adjust</span>
           </div>
         </li>
       </ul>
@@ -231,28 +160,28 @@
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-audio.svg" class="img-fluid"
               alt="function-audio">
-            <span class="pl-2">Audio Adjustment</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#audio">Audio Adjustment</span>
           </div>
         </li>
         <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-effects.svg" class="img-fluid"
               alt="function-color">
-            <span class="pl-2">object</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#object">object</span>
           </div>
         </li>
         <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
               alt="function-effects">
-            <span class="pl-2">Effects</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#compress">Compressor</span>
           </div>
         </li>
         <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-ux.svg" class="img-fluid"
               alt="function-ux">
-            <span class="pl-2">Background</span>
+            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#background">Background</span>
           </div>
         </li>
       </ul>
@@ -529,12 +458,13 @@
 </script>
 
 <!-- Modal Body-->
-<div class="modal fade" id="add_text_to_video" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" style="color: #000000;">
+<!-- text overlay -->
+<div class="modal fade" id="add_text_to_video" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" >
   <div class="modal-dialog" role="document">
     <div class="modal-content" >
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitleId">
-          Modal title
+          Text Overlay Editing
         </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -544,24 +474,307 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
         </button>
-        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- stablize -->
+<div class="modal fade" id="stablize" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Stablize Video</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- clip extraction -->
+<div class="modal fade" id="edittrim" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Trim Video </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Enter the starting time in Seconds <br> <input type="number" name="startR" id="startR">
+        <br>  Enter the end time in Seconds <br> <input type="number" name="endR" id="endR">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- video speed -->
+<div class="modal fade" id="videoSpeed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Video Speed Adjustment </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        High Speed 5x <br>  <input type="radio" name="speed" id="highspeed" >
+        <br> Slow Motion <br> <input type="radio" name="speed" id="lowspeed" >
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- audio speed -->
+<div class="modal fade" id="audio" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Audio Speed Adjustment </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        High volume 5x <br>  <input type="radio" name="speed" id="highvol" >
+        <br> Low Volume -5x <br> <input type="radio" name="speed" id="lowsvol" >
+        <br> Mute <br> <input type="radio" name="speed" id="mute" >
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- object blur -->
+<div class="modal fade" id="object" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Object blur in video </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Enter object name to blur <input type="text" name="objectname" id="objectname">
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- compress -->
+<div class="modal fade" id="compress" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Video compression </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- background removal -->
+<div class="modal fade" id="background" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Video background removal </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            </div>
+      <div class="modal-footer">
+        <button type="button" id="btn2">
+          <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M0 0h24v24H0z" fill="none"></path>
+            <path
+              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <span>Launch</span>
+        </button>
+        
       </div>
     </div>
   </div>
 </div>
 
 <style>
+  .modal{
+    color: #000000!important;
+  }
   .btn-close:hover {
     background-image: url("https://www.blackgum.com.au/graphics/icon_close.00.png")!important;
     background-size: 30px 30px;
     background-repeat: no-repeat;
     background-position: center;
   }
-</style>
+  #btn2 {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  /* border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px; */
+}
 
+#btn2 svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#btn2 span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+#btn2:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+#btn2:hover span {
+  transform: translateX(7px);
+}
+
+.modal-footer{
+  padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap)* 1)!important;
+}
+
+</style>
 
 
 {% endblock %}

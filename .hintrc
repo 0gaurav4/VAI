@@ -26,7 +26,13 @@
         ]
       }
     ],
-    "css-prefix-order": "off"
+    "css-prefix-order": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "button-name": "off"
+      }
+    ]
   },
   "browserslist": [
     "defaults",
