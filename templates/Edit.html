@@ -469,12 +469,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="container-fluid">Type Your Text here 
-          <input type="text" id="myInput">
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+          <form>
+              <input type="number" id="numStart" class="form-control" placeholder="Enter Start time in seconds"/>
+              <input type="number" id="numEnd" class="form-control" placeholder="Enter End time in seconds"/>
+              <input type="number" id="num3" class="form-control" placeholder="Enter Font size"/>
+              <input type="text" id="myInput" class="form-control" placeholder="Enter Text"/>
+              <input type="color" id="color" class="form-control" placeholder="Choose Color" value="#FFD6FC" />
+              <input type="number" id="num" class="form-control" placeholder="Enter Duration"/>
+              <select name="position" id="position" class="form-control">
+                <option value="" disabled selected>Choose Position🔻</option>
+                <option value="top">Top</option>
+                <option value="right">Right</option>
+                <option value="left">Left</option>
+                <option value="bottom">Bottom</option>
+                <option value="center">Center</option>
+              </select>      
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -487,25 +501,33 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
       </div>
+    </form>
     </div>
   </div>
 </div>
 
+
 <!-- stablize -->
-<div class="modal fade" id="stablize" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="stablize" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" >
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
-        <h5 class="modal-title">Stablize Video</h5>
+        <h5 class="modal-title" id="modalTitleId">
+          Stablize Video
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+          <form>     
+            <input type="text" name="output_name" id="output_name" placeholder="Enter output video name " class="form-control" />
         </div>
+      </div>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -518,10 +540,10 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -531,30 +553,35 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Trim Video </h5>
+        <h5 class="modal-title">Clip Extraction </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Enter the starting time in Seconds <br> <input type="number" name="startR" id="startR">
-        <br>  Enter the end time in Seconds <br> <input type="number" name="endR" id="endR">
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="btn2">
-          <svg
-            height="24"
-            width="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M0 0h24v24H0z" fill="none"></path>
-            <path
-              d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
-              fill="currentColor"
-            ></path>
-          </svg>
-          <span>Launch</span>
-        </button>
-        
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+        <form>
+          <input type="number" id="startTime" class="form-control" placeholder="Enter Start time in seconds"/>
+          <input type="number" id="endTime" class="form-control" placeholder="Enter End time in seconds"/>
+          <input type="text" id="output_clip_name" class="form-control" placeholder="Enter Clip Name"/>     
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" id="btn2">
+      <svg
+        height="24"
+        width="24"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 0h24v24H0z" fill="none"></path>
+        <path
+          d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      <span>Execute</span>
+    </button>
+  </div>
+</form>
       </div>
     </div>
   </div>
@@ -569,11 +596,17 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        High Speed 5x <br>  <input type="radio" name="speed" id="highspeed" >
-        <br> Slow Motion <br> <input type="radio" name="speed" id="lowspeed" >
-            </div>
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+        <form> <span>Adjust Video Speed</span>
+          <input type="range" name="speed" id="speedx" min="0.5" max="2" step="0.5" list="values1"/>
+          <datalist id="values1">
+          <option value="0.5" label="Slow Motion"></option>
+          <option value="1.0" label="Normal Speed"></option>
+          <option value="1.5" label="Fast Forward"></option>
+          <option value="2.0" label="Very Fast"></option>
+          </datalist>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -586,12 +619,14 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
+      </div>
+      </form>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- audio speed -->
@@ -599,16 +634,28 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Audio Speed Adjustment </h5>
+        <h5 class="modal-title">Audio Volume Adjustment </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        High volume 5x <br>  <input type="radio" name="speed" id="highvol" >
-        <br> Low Volume -5x <br> <input type="radio" name="speed" id="lowsvol" >
-        <br> Mute <br> <input type="radio" name="speed" id="mute" >
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+          <div>
+            <form>
+              <label>
+                <input type="radio" name="radio" checked id="fast" />
+                <span>Fast</span>
+              </label>
+              <label>
+                <input type="radio" name="radio" id="slow"/>
+                <span>Slow</span>
+              </label>
+              <label>
+                <input type="radio" name="radio" id="mute"/>
+                <span>Mute</span>
+              </label>
             </div>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -621,12 +668,14 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
+      </div>
+      </form>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 
@@ -635,14 +684,15 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Object blur in video </h5>
+        <h5 class="modal-title">Object bluring in video </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      Enter object name to blur <input type="text" name="objectname" id="objectname">
-            </div>
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+        <form>
+          <input type="text" name="objname" id="objnane" placeholder="Enter object name" class="form-control"/>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -655,12 +705,14 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
+      </div>
+      </form>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- compress -->
@@ -668,13 +720,30 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Video compression </h5>
+        <h5 class="modal-title">Video Compressor </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            </div>
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+        <form>  <span>Choose resize ratio</span>
+            <input type="range" name="resize" id="resize" min="0" max="1" step="0.1" list="values" width="100%" />
+            <datalist id="values">
+            <option value="0" label="0"></option>
+            <option value="0.1" label="0.1"></option>
+            <option value="0.2" label="0.2"></option>
+            <option value="0.3" label="0.3"></option>
+            <option value="0.4" label="0.4"></option>
+            <option value="0.5" label="0.5"></option>
+            <option value="0.6" label="0.6"></option>
+            <option value="0.7" label="0.7"></option>
+            <option value="0.8" label="0.8"></option>
+            <option value="0.9" label="0.9"></option>
+            <option value="1" label="1"></option>
+            </datalist>
+          <input type="number" name="fps" id="fps" placeholder="Choose fps ratio " class="form-control" />
+          <input type="text" name="output_name" id="output_name" placeholder="Enter output name " class="form-control" />
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -687,26 +756,34 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
+      </div>
+      </form>
       </div>
     </div>
   </div>
 </div>
+</div>
 
 <!-- background removal -->
-<div class="modal fade" id="background" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="background" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true" >
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" >
       <div class="modal-header">
-        <h5 class="modal-title">Video background removal </h5>
+        <h5 class="modal-title" id="modalTitleId">
+          Video background removal
+        </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-            </div>
+        <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
+          <form>     
+            <input type="text" name="output_name" id="output_name" placeholder="Enter output video name " class="form-control" />
+        </div>
+      </div>
       <div class="modal-footer">
-        <button type="button" id="btn2">
+        <button type="submit" id="btn2">
           <svg
             height="24"
             width="24"
@@ -719,10 +796,10 @@
               fill="currentColor"
             ></path>
           </svg>
-          <span>Launch</span>
+          <span>Execute</span>
         </button>
-        
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -731,6 +808,12 @@
   .modal{
     color: #000000!important;
   }
+
+  input {
+    margin: 10px 0px;
+    width: 90%;
+  }
+
   .btn-close:hover {
     background-image: url("https://www.blackgum.com.au/graphics/icon_close.00.png")!important;
     background-size: 30px 30px;
@@ -773,7 +856,50 @@
 .modal-footer{
   padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap)* 1)!important;
 }
+.modal-body{
+  padding: calc(var(--bs-modal-padding) - var(--bs-modal-body-padding-y)* 2)!important;
+}
 
+.form-control{
+  width: 100%;
+  padding: 5px; /* Padding for the content inside the input fields */
+  line-height: 1.5;
+  border-radius: 1rem;
+}
+
+
+
+.form-input-material {
+  --input-default-border-color: white;
+  --input-border-bottom-color: white;
+  
+  input {
+    color: white;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 40px;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+    0 1px 1px rgba(128, 128, 128, 0.155),
+    0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+    0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+    0 12px 12px rgba(128, 128, 128, 0.35);
+  }
+
+  datalist {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  writing-mode: horizontal-tb;
+  width: 90%;
+}
 </style>
 
 

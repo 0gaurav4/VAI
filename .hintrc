@@ -32,6 +32,12 @@
       {
         "button-name": "off"
       }
+    ],
+    "axe/parsing": [
+      "default",
+      {
+        "duplicate-id-active": "off"
+      }
     ]
   },
   "browserslist": [

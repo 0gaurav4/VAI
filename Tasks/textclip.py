@@ -13,7 +13,7 @@ def create_video_with_text(video_path="car.mp4",
     save_path = f"static/results/edited_{os.path.basename(video_path)}"
     from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip
 
-    video = VideoFileClip(video_path).subclip(3, 4)
+    video = VideoFileClip(video_path).subclip(start_time, end_time)
 
     # Make the text. Many more options are available.
     txt_clip = (TextClip(text, fontsize=fontsize, color=color)

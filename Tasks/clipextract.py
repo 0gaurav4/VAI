@@ -1,11 +1,13 @@
 # function to create clip extractor
-
-def create_clip_extractor():
+import os
+def create_clip_extractor(video_path="car.mp4",
+                          start_time = 3,
+                          end_time = 4,
+                          output_name="clip.mp4"):
     from moviepy.editor import VideoFileClip
-
-    video = VideoFileClip("car.mp4")
-    clip = video.subclip(3, 4)
-    clip.write_videofile("clip.mp4")
+    video = VideoFileClip(video_path)
+    clip = video.subclip(start_time, end_time)
+    clip.write_videofile(output_name)
 
 
 create_clip_extractor()

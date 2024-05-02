@@ -1,13 +1,14 @@
 # function to create video compression
-
-def create_video_compression():
+import os
+def create_video_compression(video_path="car.mp4",
+                             resize=0.5,
+                             fps=30,
+                             output_name="compressed.mp4"):
     from moviepy.editor import VideoFileClip
 
-    video = VideoFileClip("car.mp4")
-    # video = video.subclip(3, 4)
-    # video = video.without_audio()
-    video = video.resize(0.5)
-    video = video.set_fps(30)
-    video.write_videofile("compressed.mp4")
+    video = VideoFileClip(video_path)
+    video = video.resize(resize)
+    video = video.set_fps(fps)
+    video.write_videofile(output_name)
     
 create_video_compression()

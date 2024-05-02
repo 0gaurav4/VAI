@@ -84,7 +84,7 @@ def delete(id):
         return f" ❎ There was a problem while deleting {e}"
 
     
-@app.route('/add/text/to/video/<int:id>', methods=['POST'])
+@app.route('/edit/add_text_to_video/<int:id>', methods=['POST'])
 def add_text_to_video(request, id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
@@ -96,8 +96,80 @@ def add_text_to_video(request, id):
     # create_video_with_text(video_path=path)
     return path
 
-@app.route('/edit/trim/<int:id>', methods=['POST'])
+@app.route('/edit_stablize<int:id>', methods=['POST'])
 def stablize(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/edittrim/<int:id>', methods=['POST'])
+def edittrim(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/videoSpeed/<int:id>', methods=['POST'])
+def videoSpeed(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/audio/<int:id>', methods=['POST'])
+def audio(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/object/<int:id>', methods=['POST'])
+def object(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/compress/<int:id>', methods=['POST'])
+def compress(request, id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    if request.method == 'POST':
+        # Remove the unused variable 'text'
+        pass
+    path = os.path.join(os.getcwd(),file.filepath)
+    # create_video_with_text(video_path=path)
+    return path
+
+@app.route('/edit/background/<int:id>', methods=['POST'])
+def background(request, id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
     db.close()

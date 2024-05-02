@@ -1,6 +1,7 @@
 # background removal
-
-def create_video_background_removal():
+import os
+def create_video_background_removal(video_path="car.mp4",
+                                     output_name="remove_background.mp4"):
     import cv2
     from moviepy.editor import VideoFileClip
     video = VideoFileClip("car.mp4")
