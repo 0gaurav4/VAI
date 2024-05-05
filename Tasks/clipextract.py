@@ -9,6 +9,6 @@ def create_clip_extractor(video_path="car.mp4",
     clip = video.subclip(start_time, end_time)
     clip.write_videofile(output_name)
 
-
-create_clip_extractor()
+if __name__ == "__main__":
+    create_clip_extractor()
     

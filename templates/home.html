@@ -178,12 +178,157 @@
     }
 
     video{
-        width: 80%;
-        height: 100%;
+        width: 70%;
+        height: 60%;
         object-fit: fill;
         border-radius: 20px;
         transition: all 0.3s;
     }
+
+    
+    @media (max-width: 768px) {
+        video {
+            width: 100%;
+            height: auto;
+        }
+        div{
+            padding: 10px;
+            margin: 0;
+            width: 100%;
+        }
+        h2{
+            font-size: 28px;
+            margin-top: 20px;
+            padding: 15px;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 200px;
+            margin-left: auto;
+            margin-right: auto; 
+        }
+        .py-5{
+            padding: 0px 0 !important;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .mySwiper .swiper-slide {
+            width: 25%;
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .mySwiper .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+
+        .container { 
+            color: #c3daf4
+        } 
+
+        .function-all-thumbs .thumb-item {
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .function-all-thumbs .thumb-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .function-all-thumbs .thumb-item.active {
+            background-color: #f8f9fa;
+        }
+
+        .function-all-thumbs .thumb-item img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .function-all-thumbs .thumb-item span {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .function-content {
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .function-content p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .function-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .function-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .function-content li {
+            margin-bottom: 10px;
+        }
+
+        .function-content li:before {
+            content: "\2022";
+            color: #f67f7f;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .function-content li span {
+            font-weight: 600;
+        }
+
+        .function-content li a {
+            color: #f67f7f;
+            text-decoration: none;
+        }
+
+        .function-content li a:hover {
+            text-decoration: underline;
+            color: #f67f7f;
+        }
+
+        .function-content li:last-child {
+            margin-bottom: 0;
+        }
+
+        .img-fluid {
+            color: #f67f7f;
+            mix-blend-mode: hard-light;
+            background-color: currentcolor;
+            background-size: 0%;
+        }
+
+        .pl-2 {
+            color: #ff810e;
+        }
+
+        .pl-2:hover {
+            color: #f67f7f;
+        }
+        
+
+    }
+
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -246,7 +391,7 @@
       </div>
       <div class="video-container">
         <div class="function-content">
-          <video src="https://videos.pexels.com/video-files/5920350/5920350-uhd_3840_2160_30fps.mp4" alt="Stabilize GIF" controls autoplay loop muted ></video>
+          <video src="https://videos.pexels.com/video-files/5192157/5192157-hd_1920_1080_30fps.mp4" alt="Stabilize GIF" controls autoplay loop muted ></video>
         </div>
       </div>
       <div class="video-container">

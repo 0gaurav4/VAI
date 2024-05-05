@@ -10,5 +10,6 @@ def create_video_compression(video_path="car.mp4",
     video = video.resize(resize)
     video = video.set_fps(fps)
     video.write_videofile(output_name)
-    
-create_video_compression()
+
+if __name__ == "__main__":
+    create_video_compression()
