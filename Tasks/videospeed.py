@@ -3,7 +3,9 @@ import os
 from moviepy.editor import VideoFileClip
 
 
-def change_playback_speed(video_path="car.mp4", speed_factor=2):
+def change_playback_speed(video_path="static/uploads/car.mp4", speed_factor=2):
+    print(video_path)
+    print(speed_factor)
     os.makedirs('static/results', exist_ok=True)
     video = VideoFileClip(video_path)
     video_high_speed = video.speedx(speed_factor)  # High speed segment
@@ -23,3 +25,7 @@ def change_playback_speed(video_path="car.mp4", speed_factor=2):
 
 # create_high_speed()
 # create_slow_motion()
+
+
+if __name__ == "__main__":
+    change_playback_speed()

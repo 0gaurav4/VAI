@@ -17,13 +17,13 @@ def create_video_with_text(video_path="car.mp4",
     video = VideoFileClip(video_path).subclip(start_time, end_time)
 
     # Make the text. Many more options are available.
-    txt_clip = (TextClip(text, fontsize=fontsize, color=color, output_name=output_name)
+    txt_clip = (TextClip(text, fontsize=fontsize, color=color)
                 .set_position(position)
-                .set_duration(duration)
-                .set)
-
+                .set_duration(duration))
+    
     result = CompositeVideoClip([video, txt_clip])  # Overlay text on video
     result.write_videofile(f"edited.webm", fps=25)
+    result.write_videofile(save_path)
     return save_path
 
 if __name__ == "__main__":

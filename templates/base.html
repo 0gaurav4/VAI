@@ -232,7 +232,6 @@
   {% block css %} {% endblock %}
 
 </head>
-
 <body>
   <!-- <marquee behavior="alternate"> Video Editing & Manipulation Tool Using AI The Time Series Forecasting</marquee> -->
   <input type="checkbox" id="check">
@@ -372,8 +371,14 @@
               Home
             </a>
           </li>
-
-
+          <li>
+            <a href="/uploads" class="nav-link text-white">
+              <svg class="bi me-2" width="16" height="16">
+                <use xlink:href="#toggles2"></use>
+              </svg>
+              Upload
+            </a>
+          </li>
           <li>
             <a href="/dashboard" class="nav-link text-white">
               <svg class="bi me-2" width="16" height="16">
@@ -383,11 +388,11 @@
             </a>
           </li>
           <li>
-            <a href="/uploads" class="nav-link text-white">
+            <a href="/results" class="nav-link text-white">
               <svg class="bi me-2" width="16" height="16">
-                <use xlink:href="#toggles2"></use>
+                <use xlink:href="#grid"></use>
               </svg>
-              Upload
+              Edited Videos
             </a>
           </li>
         </ul>

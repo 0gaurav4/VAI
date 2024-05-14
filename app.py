@@ -9,10 +9,10 @@ from Tasks.audiospeed import adjust_video_volume
 from Tasks.backgroundremove import create_video_background_removal
 from Tasks.clipextract import create_clip_extractor
 from Tasks.videocompress import create_video_compression
-# from Tasks.stablize import stabilize_video
-from Tasks.objectdetect import process_video
+from Tasks.stablize import stabilize_video
+# from Tasks.objectdetect import process_video
 from Tasks.videospeed import change_playback_speed
-
+from Tasks.bluringObj import blur_content_in_video
 
 app = Flask(__name__)
 app.secret_key = 'thisisaverysecretkey'
@@ -105,10 +105,19 @@ def delete(id):
         # return render_template('dashboard.html')
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
-
     
+@app.route('/file/delete/')
+def delete_file():
+    if request.args.get('p'):
+        path = request.args.get('p')
+        if os.path.isfile(path):
+            os.remove(path)
+        return redirect('/results')
+    return redirect('/results')
+    
+ 
 @app.route('/edit/add_text_to_video/<int:id>', methods=['POST'])
-def add_text_to_video(id):
+def create_video_with_text_view(id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
     db.close()
@@ -124,23 +133,30 @@ def add_text_to_video(id):
     outout_pathT = os.path.join(os.getcwd(),"static","results","text_overlay"+output_name+ext)
     source = os.path.join(os.getcwd(),file.filepath)
     print(f'{source} => {outout_pathT}')
+    create_video_with_text(video_path=source, output_name=outout_pathT, start_time=start_time, end_time=end_time, text=text, fontsize=fontsize, position=position, color=color, duration=duration)
     try:
-        add_text_to_video(video_path=source, output_name=outout_pathT, start_time=start_time, end_time=end_time, text=text, fontsize=fontsize, position=position, color=color, duration=duration)
+        create_video_with_text(video_path=source, output_name=outout_pathT, start_time=start_time, end_time=end_time, text=text, fontsize=fontsize, position=position, color=color, duration=duration)
         return f'video created successfully : {outout_pathT}'
     except Exception as e:
+        print(e)
         return f" ❎ There was a problem while deleting {e}"
 
-@app.route('/edit_stablize<int:id>', methods=['POST'])
-def stablize(request, id):
+
+@app.route('/edit/stablize/<int:id>', methods=['POST'])
+def stablize(id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
     db.close()
-    if request.method == 'POST':
-        # Remove the unused variable 'text'
-        pass
-    path = os.path.join(os.getcwd(),file.filepath)
-    # create_video_with_text(video_path=path)
-    return path
+    path, ext = os.path.splitext(file.filepath)
+    output_name = request.form['output_name']
+    outout_path = os.path.join(os.getcwd(),"static","results","stabilized_"+output_name+ext)
+    source = os.path.join(os.getcwd(),file.filepath)
+    print(f'{source} => {outout_path}')
+    try:
+        stabilize_video(video_path=source, output_name=outout_path)
+        return f'video created successfully : {outout_path}'
+    except Exception as e:
+        return f" ❎ There was a problem while deleting {e}"
 
 @app.route('/edit/edittrim/<int:id>', methods=['POST'])
 def edittrim(id):
@@ -160,47 +176,56 @@ def edittrim(id):
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
     
-@app.route('/edit/videoSpeed/<int:id>', methods=['POST'])
+@app.route('/edit/videospeed/<int:id>', methods=['POST'])
 def videoSpeed(id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
     db.close()
     path, ext = os.path.splitext(file.filepath)
     output_name = request.form.get('output_name') or 'clip'
-    start_time = request.form.get('start_time') or 0
-    end_time = request.form.get('end_time') or 0
+    speed = request.form.get('speed') or 2
     outout_pathT = os.path.join(os.getcwd(),"static","results","video_speed_"+output_name+ext)
     source = os.path.join(os.getcwd(),file.filepath)
     print(f'{source} => {outout_pathT}')
     try:
-        change_playback_speed(video_path=source, output_name=outout_pathT, start_time=start_time, end_time=end_time)
+        change_playback_speed(video_path=source, speed_factor=int(speed))
         return f'video created successfully : {outout_pathT}'
+    except Exception as e:
+        print(e)
+        return f" ❎ There was a problem while deleting {e}"
+    
+
+@app.route('/edit/audio/<int:id>', methods=['POST'])
+def audio(id):
+    db  = opendb()
+    file = db.query(DataSet).filter(DataSet.id==id).first()
+    db.close()
+    path, ext = os.path.splitext(file.filepath)
+    output_name = request.form['output_name']
+    outout_path = os.path.join(os.getcwd(),"static","results","audio_"+output_name+ext)
+    source = os.path.join(os.getcwd(),file.filepath)
+    print(f'{source} => {outout_path}')
+    try:
+        adjust_video_volume(video_path=source, output_name=outout_path)
+        return f'video created successfully : {outout_path}'
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
 
-@app.route('/edit/audio/<int:id>', methods=['POST'])
-def audio(request, id):
-    db  = opendb()
-    file = db.query(DataSet).filter(DataSet.id==id).first()
-    db.close()
-    if request.method == 'POST':
-        # Remove the unused variable 'text'
-        pass
-    path = os.path.join(os.getcwd(),file.filepath)
-    # create_video_with_text(video_path=path)
-    return path
-
 @app.route('/edit/object/<int:id>', methods=['POST'])
-def object(request, id):
+def object(id):
     db  = opendb()
     file = db.query(DataSet).filter(DataSet.id==id).first()
     db.close()
-    if request.method == 'POST':
-        # Remove the unused variable 'text'
-        pass
-    path = os.path.join(os.getcwd(),file.filepath)
-    # create_video_with_text(video_path=path)
-    return path
+    path, ext = os.path.splitext(file.filepath)
+    output_name = request.form['objname']
+    outout_path = os.path.join(os.getcwd(),"static","results","object_"+output_name+ext)
+    source = os.path.join(os.getcwd(),file.filepath)
+    print(f'{source} => {outout_path}')
+    try:
+        blur_content_in_video(path=source, output_path=outout_path)
+        return f'video created successfully : {outout_path}'
+    except Exception as e:
+        return f" ❎ There was a problem while deleting {e}"
 
 @app.route('/edit/compress/<int:id>', methods=['POST'])
 def compress(id):
@@ -213,7 +238,7 @@ def compress(id):
     source = os.path.join(os.getcwd(),file.filepath)
     print(f'{source} => {outout_pathT}')
     try:
-        create_clip_extractor(video_path=source, output_name=outout_pathT)
+        create_video_compression(video_path=source, output_name=outout_pathT)
         return f'video created successfully : {outout_pathT}'
     except Exception as e:
         return f" ❎ There was a problem while deleting {e}"
