@@ -148,7 +148,15 @@
   }
 </style>
 
-
+<!-- remove active class -->
+<script>
+  $(document).ready(function () {
+    $(".thumb-item").click(function () {
+      $(".thumb-item").removeClass("active");
+      $(this).addClass("active");
+    });
+  });
+</script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -172,6 +180,7 @@
             <span class="pl-2" data-bs-toggle="modal" data-bs-target="#stablize">Stablize</span>
           </div>
         </li> -->
+<<<<<<< HEAD
         <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
@@ -195,9 +204,34 @@
         </li>
         <!-- <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
+=======
+        <li class="thumb-item active">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#compress">
+>>>>>>> 826f2f3b5d9b542147715adf5f395d4372533b96
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
               alt="function-effects">
-            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#videoSpeed">Video Speed Adjust</span>
+            <span class="pl-2">Compressor</span>
+          </div>
+        </li>
+        <li class="thumb-item">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#add_text_to_video">
+            <img src="https://images.wondershare.com/filmora/filmora12/product/function-audio.svg" class="img-fluid"
+              alt="function-audio">
+            <span class="pl-2">Text-Overlay</span>
+          </div>
+        </li>
+        <li class="thumb-item">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#edittrim">
+            <img src="https://images.wondershare.com/filmora/filmora12/product/function-effects.svg" class="img-fluid"
+              alt="function-color">
+            <span class="pl-2">Clip Extraction</span>
+          </div>
+        </li>
+        <li class="thumb-item">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#background">
+            <img src="https://images.wondershare.com/filmora/filmora12/product/function-ux.svg" class="img-fluid"
+              alt="function-ux">
+            <span class="pl-2">Background</span>
           </div>
         </li> -->
         <li class="thumb-item">
@@ -209,6 +243,7 @@
         </li>
       </ul>
       <br>
+<<<<<<< HEAD
       <ul
         class="function-all-thumbs text-center d-flex justify-content-md-between position-relative py-0 px-md-3 m-0 h5 font-weight-extra-bold list-unstyled">
         <!-- <li class="thumb-item">
@@ -216,6 +251,14 @@
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-audio.svg" class="img-fluid"
               alt="function-audio">
             <span class="pl-2" data-bs-toggle="modal" data-bs-target="#audio">Audio Adjustment</span>
+=======
+      <ul class="function-all-thumbs text-center d-flex justify-content-md-between position-relative py-0 px-md-3 m-0 h5 font-weight-extra-bold list-unstyled">
+        <li class="thumb-item">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#stablize">
+            <img src="https://images.wondershare.com/filmora/filmora12/product/function-edit.svg" class="img-fluid"
+              alt="function-edit">
+            <span class="pl-2">Stablize Video</span>
+>>>>>>> 826f2f3b5d9b542147715adf5f395d4372533b96
           </div>
         </li> -->
         <li class="thumb-item active">
@@ -226,12 +269,13 @@
           </div>
         </li>
         <li class="thumb-item">
-          <div class="d-inline-flex align-items-center">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#object">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-effects.svg" class="img-fluid"
               alt="function-color">
-            <span class="pl-2" data-bs-toggle="modal" data-bs-target="#object">object</span>
+            <span class="pl-2">Object Detection</span>
           </div>
         </li>
+<<<<<<< HEAD
         <!-- <li class="thumb-item">
           <div class="d-inline-flex align-items-center">
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
@@ -244,6 +288,13 @@
             <img src="https://images.wondershare.com/filmora/filmora12/product/function-ux.svg" class="img-fluid"
               alt="function-ux">
             <span class="pl-2" data-bs-toggle="modal" data-bs-target="#background">Background</span>
+=======
+        <li class="thumb-item">
+          <div class="d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#videoSpeed">
+            <img src="https://images.wondershare.com/filmora/filmora12/product/function-color.svg" class="img-fluid"
+              alt="function-effects">
+            <span class="pl-2">Video Speed Adjustment</span>
+>>>>>>> 826f2f3b5d9b542147715adf5f395d4372533b96
           </div>
         </li> -->
         <li class="thumb-item">
@@ -512,7 +563,7 @@
 <div class="modal fade" id="add_text_to_video" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <form hx-post="/edit/add_text_to_video/{{id}}">
-      <div class="modal-content">
+      <div class="modal-content close">
         <div class="modal-header">
           <h5 class="modal-title" id="modalTitleId">
             Video Text Overlay
@@ -627,8 +678,7 @@
 </div>
 
 <!-- video speed -->
-<div class="modal fade" id="videoSpeed" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="videoSpeed" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <form hx-post="/edit/videospeed/{{id}}">
     <div class="modal-content">
@@ -646,6 +696,8 @@
               <option value="1.5" label="Fast Forward"></option>
               <option value="2.0" label="Very Fast"></option>
             </datalist>
+            </div>
+            </div>
             <div class="modal-footer">
               <div class="container1">
                 <button id="myButtonVSpeed" class="btn2">
@@ -663,6 +715,7 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
   </div>
 </div>
 
@@ -713,20 +766,23 @@
   </div>
 </div>
 
+=======
+>>>>>>> 826f2f3b5d9b542147715adf5f395d4372533b96
 
 <!-- object blur -->
-<div class="modal fade" id="object" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="object" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <form hx-post="/edit/object/{{id}}">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Object bluring in video </h5>
+        <h5 class="modal-title">Object detection in video </h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container-fluid" data-mdb-input-init class="form-outline mb-4">
             <input type="text" name="objname" id="objnane" placeholder="Enter object name" class="form-control" />
+            </div>
+            </div>
             <div class="modal-footer">
               <div class="container1">
                 <button id="myButtonblur" class="btn2">
@@ -738,14 +794,16 @@
                   </svg>
                   <span id="executeText">Execute</span>
                 </button>
+<<<<<<< HEAD
             </div>
+=======
+              </div>
+>>>>>>> 826f2f3b5d9b542147715adf5f395d4372533b96
             </div>
           </form>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
 <!-- compress -->
 <div class="modal fade" id="compress" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
