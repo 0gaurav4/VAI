@@ -1,5 +1,11 @@
 # VAI
 
+# install requirements
+
+`pip install -r Requiremnets.txt`
+
+
+
 Modules :
 
 1. Video Input Output
